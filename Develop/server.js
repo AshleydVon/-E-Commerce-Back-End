@@ -10,17 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-// Add a test route
-app.get('/test', (req, res) => {
-  res.json({ message: 'Test route working' });
-});
-
-// Sync Sequelize models and start the server
+// Sync Sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    console.log('Press Ctrl+C to stop the server');
-  });
-}).catch(error => {
-  console.error('Unable to connect to the database:', error);
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });

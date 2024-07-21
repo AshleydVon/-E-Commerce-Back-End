@@ -33,8 +33,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const category = await Category.create(req.body);
-    res.status(200).json(category);
+    // Changed status code to 201 for resource creation
+    res.status(201).json(category);
   } catch (err) {
+    // Added error logging
+    console.error('Error creating category:', err);
     res.status(400).json(err);
   }
 });

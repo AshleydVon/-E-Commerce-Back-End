@@ -15,6 +15,8 @@ const sequelize = process.env.DB_URL
         dialectOptions: {
           decimalNumbers: true,
         },
+        // Added logging to help diagnose database connection issues
+        logging: console.log,
       }
     );
 
